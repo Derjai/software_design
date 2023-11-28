@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AHEmmgioFkv4aSm2JHByRkXtnmZ0RhR+9uuCIJDtw8to+Z9Urxq/wWEggmoKWLEbzyZ74hRYlYURnLQ5pF9ekw==",
+  "dgSpecHash": "bdyhqjleky5UMhmzYj1Se3Vy4r1RcgFV+m216I48kL/J9kLUzN7IhrCLCybIrfcUV3JpjFW/EbcVjp6TgG+FHA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jaider\\Documents\\GitHub\\software_design\\proyecto_Software\\Log_Transacciones\\Log_Transacciones.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Jaider\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\mongodb.bson\\2.22.0\\mongodb.bson.2.22.0.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\mongodb.driver\\2.22.0\\mongodb.driver.2.22.0.nupkg.sha512",

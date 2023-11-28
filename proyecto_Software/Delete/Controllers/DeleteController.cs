@@ -3,6 +3,7 @@ using Delete.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 
 namespace Delete.Controllers
 {
@@ -15,16 +16,16 @@ namespace Delete.Controllers
         {
             _context = context;
         }
-        // POST: api/Update
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPost("/api/Delete/{num_doc}")]
-        public async Task<ActionResult<Persona>> PostPersona(string num_doc)
+        [HttpDelete("/api/Delete/{num_doc}")]
+        public async Task<ActionResult<Persona>> DeletePersona(string num_doc)
         {
             try
             {
-                var persona = await _context.Personas.FindAsync(num_doc);
+                var persona = await _context.Personas.FirstOrDefaultAsync(x => x.Num_Doc == num_doc);
                 if (persona == null)
                 {
                     return NotFound("No se encontró el registro");

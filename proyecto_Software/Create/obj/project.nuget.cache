@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CnDFUS4R42NtNqHUrt/VVZ49/B4Tb5FvclWufH8sqPWk+NlvOCHcGv72iMmjwN1Jxt//1eB/m3p1I8RaRKZ6AA==",
+  "dgSpecHash": "P0crjJfEH8uwclDCcxepIDg/toGT8bhg6sDUMuzscivLzcu1FllNEOufmazKdl5GqJRNQEbY8bm/5Ee6/oY/vw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jaider\\Documents\\GitHub\\software_design\\proyecto_Software\\Create\\Create.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jaider\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
     "C:\\Users\\Jaider\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",

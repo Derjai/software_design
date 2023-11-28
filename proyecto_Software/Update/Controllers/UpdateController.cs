@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 using Update.DBContext;
 using Update.Models;
 
@@ -15,12 +16,12 @@ namespace Update.Controllers
         {
             _context = context;
         }
-        // POST: api/Update
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPost("/api/Update/{num_doc}")]
-        public async Task<ActionResult<Persona>> PostPersona(string num_doc,[FromForm] Persona per)
+        [HttpPut("/api/Update/{num_doc}")]
+        public async Task<ActionResult<Persona>> UpdatePersona(string num_doc,[FromBody] Persona per)
         {
             try
             {

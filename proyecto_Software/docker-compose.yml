@@ -1,0 +1,98 @@
+version: '3.4'
+
+networks:
+  backend:
+  frontend:
+
+services:
+
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+     - 8001:80
+    networks:
+     - backend
+     - frontend
+
+  log_transacciones:
+    container_name: historial
+    image: ${DOCKER_REGISTRY-}logtransacciones
+    build:
+      context: .
+      dockerfile: Log_Transacciones/Dockerfile
+    networks:
+    - backend
+    environment:
+    - DB_HOST=logdb
+    - DB_NAME=log_transacciones
+
+  create:
+    image: ${DOCKER_REGISTRY-}create
+    build:
+      context: .
+      dockerfile: Create/Dockerfile
+    networks:
+    - backend
+    environment:
+     - DB_HOST=personadb
+     - DB_NAME=personas
+     - DB_PASSWORD=123456 
+  
+  delete:
+    image: ${DOCKER_REGISTRY-}delete
+    build:
+      context: .
+      dockerfile: Delete/Dockerfile
+    networks:
+    - backend
+    environment:
+     - DB_HOST=personadb
+     - DB_NAME=personas
+     - DB_PASSWORD=123456 
+
+  read:
+    image: ${DOCKER_REGISTRY-}read
+    build:
+      context: .
+      dockerfile: Read/Dockerfile
+    networks:
+    - backend
+    environment:
+     - DB_HOST=personadb
+     - DB_NAME=personas
+     - DB_PASSWORD=123456 
+
+  update:
+    image: ${DOCKER_REGISTRY-}update
+    build:
+      context: .
+      dockerfile: Update/Dockerfile
+    networks:
+    - backend
+    environment:
+     - DB_HOST=personadb
+     - DB_NAME=personas
+     - DB_PASSWORD=123456 
+
+  personadb:
+    container_name: personas-db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+     MYSQL_ROOT_PASSWORD: 123456
+    networks:
+     - backend
+    ports:
+     - 8003:3306
+  
+  logdb:
+    container_name: log-db
+    image: mongo
+    ports:
+     - 8002:27017
+    networks:
+     - backend

@@ -8,8 +8,8 @@ namespace Log_Transacciones.Models
     public class Log
     {
         [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
-        [BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
-        public string Id_Log { get; set; } = null!;
+        [BsonElement("_id")]
+        public string Id_Log { get; set; } = Guid.NewGuid().ToString();
 
         [BsonElement("num_doc"), BsonRepresentation(BsonType.String)]
         public string Num_Doc { get; set; } = null!;
@@ -19,5 +19,7 @@ namespace Log_Transacciones.Models
 
         [BsonElement("fecha"), BsonRepresentation(BsonType.DateTime)]
         public DateTime Fecha { get; set; }
+
+        
     }
 }

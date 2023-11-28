@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Configuration;
 
 namespace Log_Transacciones.Controllers
 {
@@ -29,12 +30,12 @@ namespace Log_Transacciones.Controllers
         public async Task<ActionResult<IEnumerable<Log>>> GetLogs()
         {
             try 
-            { 
+            {
                 var logs = await _logCollection.Find(Builders<Log>.Filter.Empty).ToListAsync();
-                if (logs == null) return NotFound("No existen registros en la base de datos");
+                if (logs.Count == 0) return NotFound("No existen registros en la base de datos");
                 return Ok(logs); 
-            } 
-            catch(Exception ex) 
+            }
+            catch (Exception ex) 
             { 
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
@@ -53,7 +54,7 @@ namespace Log_Transacciones.Controllers
             {
                 var filterDefinition = Builders<Log>.Filter.Eq(x => x.Num_Doc, num_doc);
                 var logs = await _logCollection.Find(filterDefinition).ToListAsync();
-                if (logs == null) return NotFound($"No hay registros de transacciones con el numero documento {num_doc}");
+                if (logs.Count == 0) return NotFound($"No hay registros de transacciones con el numero documento {num_doc}");
                 return Ok(logs);
             }
             catch (Exception ex)
@@ -74,7 +75,7 @@ namespace Log_Transacciones.Controllers
             {
                 var filterDefinition = Builders<Log>.Filter.Eq(x => x.Fecha, fecha);
                 var logs = await _logCollection.Find(filterDefinition).ToListAsync();
-                if (logs == null) return NotFound($"No hay registros de transacciones en la fecha: {fecha}");
+                if (logs.Count == 0) return NotFound($"No hay registros de transacciones en la fecha: {fecha}");
                 return Ok(logs);
             }
             catch (Exception ex)
@@ -88,14 +89,14 @@ namespace Log_Transacciones.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpGet("/api/Log/fecha/{fecha}")]
+        [HttpGet("/api/Log/tipo/{tipo}")]
         public async Task<ActionResult<IEnumerable<Log>>> GetByType(string tipo)
         {
             try
             {
                 var filterDefinition = Builders<Log>.Filter.Eq(x => x.Tipo_Transaccion, tipo);
                 var logs = await _logCollection.Find(filterDefinition).ToListAsync();
-                if (logs == null) return NotFound($"No hay registros de transacciones de tipo {tipo}");
+                if (logs.Count == 0) return NotFound($"No hay registros de transacciones de tipo {tipo}");
                 return Ok(logs);
             }
             catch (Exception ex)

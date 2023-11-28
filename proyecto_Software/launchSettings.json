@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "apigateway": "StartDebugging",
+        "log_transacciones": "StartDebugging",
+        "create": "StartDebugging",
+        "delete": "StartDebugging",
+        "read": "StartDebugging",
+        "update": "StartDebugging"
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/Create",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "create",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Create"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Read",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "read",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Read"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Read/doc/{doc}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "read",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Read/doc/{doc}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Update/{num_doc}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "update",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Update/{num_doc}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Delete/{num_doc}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "delete",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Delete/{num_doc}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Log",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "log_transacciones",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Log"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Log/doc/{num_doc}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "log_transacciones",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Log/doc/{num_doc}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Log/fecha/{fecha}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "log_transacciones",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Log/fecha/{fecha}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Log/tipo/{tipo}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "log_transacciones",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Log/tipo/{tipo}"
+    }
+  ]
+}

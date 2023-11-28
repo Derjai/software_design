@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 using Read.DBContext;
 using Read.Models;
 
@@ -15,7 +16,7 @@ namespace Read.Controllers
         {
             _context = context;
         }
-        // GET: api/Read
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -25,8 +26,26 @@ namespace Read.Controllers
             try
             {
                 var personas = await _context.Personas.ToListAsync();
-                if (personas == null) return NotFound("No existen registros en la base de datos");
+                if (personas.Count == 0) return NotFound("No existen registros en la base de datos");
                 return Ok(personas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("/api/Read/doc/{doc}")]
+        public async Task<ActionResult<Persona>> GetById(string doc)
+        {
+            try
+            {
+                var persona = await _context.Personas.FirstOrDefaultAsync(x => x.Num_Doc == doc);
+                if (persona == null) return NotFound($"No existe el registro con el número de documento {doc}");
+                return Ok(persona);
             }
             catch (Exception ex)
             {
