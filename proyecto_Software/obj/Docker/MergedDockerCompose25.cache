@@ -1,0 +1,144 @@
+name: dockercompose6710988243085063483
+services:
+  apigateway:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: ApiGateway/Dockerfile
+    container_name: api-gateway
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: apigateway
+    networks:
+      backend: null
+      frontend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "8001"
+        protocol: tcp
+  blazorserverweb:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: BlazorServerWeb/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+    image: blazorserverweb
+    networks:
+      frontend: null
+    ports:
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+  create:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: Create/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: personadb
+      DB_NAME: personas
+      DB_PASSWORD: "123456"
+    image: create
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  delete:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: Delete/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: personadb
+      DB_NAME: personas
+      DB_PASSWORD: "123456"
+    image: delete
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  log_transacciones:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: Log_Transacciones/Dockerfile
+    container_name: historial
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: logdb
+      DB_NAME: log_transacciones
+    image: logtransacciones
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  logdb:
+    container_name: log-db
+    image: mongo
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 27017
+        published: "8002"
+        protocol: tcp
+  personadb:
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    container_name: personas-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    image: mysql
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "8003"
+        protocol: tcp
+  read:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: Read/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: personadb
+      DB_NAME: personas
+      DB_PASSWORD: "123456"
+    image: read
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  update:
+    build:
+      context: C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software
+      dockerfile: Update/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: personadb
+      DB_NAME: personas
+      DB_PASSWORD: "123456"
+    image: update
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+networks:
+  backend:
+    name: dockercompose6710988243085063483_backend
+  frontend:
+    name: dockercompose6710988243085063483_frontend

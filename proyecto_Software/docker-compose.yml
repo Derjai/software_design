@@ -96,3 +96,15 @@ services:
      - 8002:27017
     networks:
      - backend
+  
+  blazorserverweb:
+    image: ${DOCKER_REGISTRY-}blazorserverweb
+    build:
+      context: .
+      dockerfile: BlazorServerWeb/Dockerfile
+    ports:
+     - 8000:80
+    networks:
+     - frontend
+    environment:
+     - API_GATEWAY_URL=http://apigateway:8001

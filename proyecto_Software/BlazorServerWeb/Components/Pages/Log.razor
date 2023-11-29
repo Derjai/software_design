@@ -1,0 +1,103 @@
+﻿<!-- Pages/Log.razor -->
+@page "/Historial"
+@using BlazorServerWeb.Services
+@using BlazorServerWeb.Models
+@inject LogService LogService
+<h3>Historial de transacciones</h3>
+
+<div>
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" @bind="FechaFiltro" />
+
+    <label for="numeroDocumento">Número de Documento:</label>
+    <input type="text" id="numeroDocumento" @bind="NumeroDocumentoFiltro" />
+
+    <label for="tipoTransaccion">Tipo de Transacción:</label>
+    <select id="tipoTransaccion" @bind="TipoTransaccionFiltro">
+        <option value="">Todos</option>
+        <option value="Crear">Crear</option>
+        <option value="Leer">Leer</option>
+        <option value="Actualizar">Actualizar</option>
+        <option value="Borrar">Borrar</option>
+    </select>
+
+    <button @onclick="(async () => await Filtrar())">Filtrar</button>
+</div>
+@if (Logs == null)
+{
+    <p>Cargando registros...</p>
+}
+else if (Logs.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Número de Documento</th>
+                <th>Tipo de Transacción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Logs)
+            {
+                <tr>
+                    <td>@log.Fecha.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@log.Num_Doc</td>
+                    <td>@log.Tipo_Transaccion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Logs.Count() == 0)
+{
+    <p>No hay registros del historial disponibles.</p>
+}
+
+@code {
+    string? NumeroDocumentoFiltro { get; set; }
+    DateTime? FechaFiltro { get; set; }
+    string? TipoTransaccionFiltro { get; set; }
+    private IEnumerable<BlazorServerWeb.Models.Log> Logs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Logs = await LogService.GetLogsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener registros: {ex.Message}");
+        }
+    }
+    private async Task Filtrar()
+    {
+        try
+        {
+            Console.WriteLine("Iniciando Filtrar...");
+            Logs = await LogService.GetLogsAsync();
+
+            if (!string.IsNullOrEmpty(NumeroDocumentoFiltro))
+            {
+                Logs = Logs.Where(log => log.Num_Doc == NumeroDocumentoFiltro);
+            }
+
+            if (!string.IsNullOrEmpty(TipoTransaccionFiltro))
+            {
+                Logs = Logs.Where(log => log.Tipo_Transaccion == TipoTransaccionFiltro);
+            }
+
+            if (FechaFiltro.HasValue)
+            {
+                Logs = Logs.Where(log => log.Fecha.Date == FechaFiltro.Value.Date);
+            }
+            Console.WriteLine("Filtrar completado...");
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al filtrar: {ex.Message}");
+        }
+    }
+}

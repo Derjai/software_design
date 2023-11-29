@@ -108,5 +108,9 @@
       ],
       "DownstreamPathTemplate": "/api/Log/tipo/{tipo}"
     }
-  ]
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5135"
+  }
 }
+

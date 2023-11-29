@@ -26,7 +26,6 @@ C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Log
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Read.dll
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Update.dll
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Ocelot.dll
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Microsoft.EntityFrameworkCore.dll
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
@@ -66,3 +65,9 @@ C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\obj\Debug\doc
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\obj\Debug\docker-compose.dcproj.CopyComplete
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\MySqlConnector.dll
+C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\BlazorServerWeb.deps.json
+C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\BlazorServerWeb.runtimeconfig.json
+C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\BlazorServerWeb.staticwebassets.runtime.json
+C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\BlazorServerWeb.exe
+C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\BlazorServerWeb.dll
+C:\Users\Jaider\Documents\GitHub\software_design\proyecto_Software\bin\Debug\BlazorServerWeb.pdb

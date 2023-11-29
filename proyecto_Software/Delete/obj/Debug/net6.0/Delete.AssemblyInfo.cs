@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Delete")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+788ad7628bb82853d048e11ffac9a2f134b6c969")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78cc0cda0eb58f7a5b26ce06c20c8ffe678b35cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Delete")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Delete")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

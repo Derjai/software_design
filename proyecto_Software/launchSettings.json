@@ -9,7 +9,8 @@
         "create": "StartDebugging",
         "delete": "StartDebugging",
         "read": "StartDebugging",
-        "update": "StartDebugging"
+        "update": "StartDebugging",
+        "blazorserverweb": "StartDebugging"
       }
     }
   }

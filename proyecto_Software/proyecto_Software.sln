@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\Ap
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7266F9C3-EA2E-4EB6-88F1-D743BC5ACDFA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServerWeb", "BlazorServerWeb\BlazorServerWeb.csproj", "{E079BE04-81C7-407C-94F9-180D6A65BBA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{7266F9C3-EA2E-4EB6-88F1-D743BC5ACDFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7266F9C3-EA2E-4EB6-88F1-D743BC5ACDFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7266F9C3-EA2E-4EB6-88F1-D743BC5ACDFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E079BE04-81C7-407C-94F9-180D6A65BBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E079BE04-81C7-407C-94F9-180D6A65BBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E079BE04-81C7-407C-94F9-180D6A65BBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E079BE04-81C7-407C-94F9-180D6A65BBA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{6472883F-89AA-402C-9201-483692D5A505} = {117AAD79-5114-49E3-A144-B5B3949FA2A0}
 		{7E5F6AD4-A68E-4234-8C26-E46E6C761DD5} = {8B216F71-9599-469C-A2CD-C09D8E7CB1AF}
 		{1761F450-8126-4D7C-A1D1-E637AD286AA9} = {9500EAD5-6964-4D20-8292-6341D156D104}
+		{E079BE04-81C7-407C-94F9-180D6A65BBA1} = {E8549A28-FC23-4F54-946A-CDC7C2191289}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5EEA91CF-6531-495B-AC41-F90482482D7F}
