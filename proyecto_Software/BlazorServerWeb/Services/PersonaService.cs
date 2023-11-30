@@ -1,4 +1,5 @@
 ﻿using BlazorServerWeb.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorServerWeb.Services
@@ -15,7 +16,7 @@ namespace BlazorServerWeb.Services
         {
             try 
             {
-                return await _httpClient.GetFromJsonAsync<IEnumerable<Persona>>("/api/Read");
+                return await _httpClient.GetFromJsonAsync<IEnumerable<Persona>>("http://host.docker.internal:8001/api/Read");
             }
             catch (Exception ex)
             {
@@ -24,11 +25,11 @@ namespace BlazorServerWeb.Services
             }
         }
 
-        public async Task<Persona> GetPersonaAsync(int id)
+        public async Task<Persona> GetPersonaAsync(string id)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<Persona>($"/api/Read/doc/{id}");
+                return await _httpClient.GetFromJsonAsync<Persona>($"http://host.docker.internal:8001/api/Read/doc/{id}");
             }
             catch (Exception ex)
             {
@@ -37,12 +38,12 @@ namespace BlazorServerWeb.Services
             }
         }
 
-        public async Task<Persona> AddPersonaAsync(Persona persona)
+        public async Task AddPersonaAsync(Persona persona)
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync<Persona>("/api/Create", persona);
-                return await response.Content.ReadFromJsonAsync<Persona>();
+                var response = await _httpClient.PostAsJsonAsync<Persona>("http://host.docker.internal:8001/api/Create", persona);
+                response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
             {
@@ -55,7 +56,8 @@ namespace BlazorServerWeb.Services
         {
             try
             {
-                await _httpClient.PutAsJsonAsync<Persona>($"/api/Update/{persona.Num_Doc}", persona);
+                var response =await _httpClient.PutAsJsonAsync<Persona>($"http://host.docker.internal:8001/api/Update/{persona.Num_Doc}", persona);
+                response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
             {
@@ -64,11 +66,12 @@ namespace BlazorServerWeb.Services
             }
         }
 
-        public async Task DeletePersonaAsync(int id)
+        public async Task DeletePersonaAsync(string id)
         {
             try
             {
-                await _httpClient.DeleteAsync($"/api/Delete/{id}");
+                var response = await _httpClient.DeleteAsync($"http://host.docker.internal:8001/api/Delete/{id}");
+                response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
             {

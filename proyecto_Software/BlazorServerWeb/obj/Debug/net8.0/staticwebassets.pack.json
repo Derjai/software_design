@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\Jaider\\Documents\\GitHub\\software_design\\proyecto_Software\\BlazorServerWeb\\wwwroot\\myscripts.js",
+      "PackagePath": "staticwebassets\\myscripts.js"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorServerWeb.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

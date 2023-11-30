@@ -1,0 +1,51 @@
+﻿@page "/LogTipo/{TipoTransaccionFiltro}"
+@using BlazorServerWeb.Services
+@using BlazorServerWeb.Models
+@inject LogService LogService
+<h3>Historial por Tipo de Transacción</h3>
+@if (Logs == null)
+{
+    <p>Cargando registros...</p>
+}
+else if (Logs.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Número de Documento</th>
+                <th>Tipo de Transacción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Logs)
+            {
+                <tr>
+                    <td>@log.Fecha.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@log.Num_Doc</td>
+                    <td>@log.Tipo_Transaccion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Logs.Count() == 0)
+{
+    <p>No hay registros del historial disponibles.</p>
+}
+
+@code {
+    [Parameter] public string TipoTransaccionFiltro { get; set; }
+    private IEnumerable<BlazorServerWeb.Models.Log> Logs;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Logs = await LogService.GetByType(TipoTransaccionFiltro);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener registros: {ex.Message}");
+        }
+    }
+}

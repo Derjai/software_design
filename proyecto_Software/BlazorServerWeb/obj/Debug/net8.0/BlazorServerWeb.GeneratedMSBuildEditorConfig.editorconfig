@@ -22,8 +22,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/BorrarPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb3JyYXJQZXJzb25hLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/CambiosPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDYW1iaW9zUGVyc29uYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/CrearPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDcmVhclBlcnNvbmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/DetallesPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEZXRhbGxlc1BlcnNvbmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/EditarPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFZGl0YXJQZXJzb25hLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/Error.razor]
@@ -38,8 +54,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/LogDocumento.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dEb2N1bWVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/LogFecha.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dGZWNoYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/LogTipo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dUaXBvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Pages/Persona.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQZXJzb25hLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Jaider/Documents/GitHub/software_design/proyecto_Software/BlazorServerWeb/Components/Routes.razor]

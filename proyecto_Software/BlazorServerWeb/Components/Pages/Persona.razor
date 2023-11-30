@@ -1,0 +1,68 @@
+﻿@page "/Gestion"
+@using BlazorServerWeb.Services
+@using BlazorServerWeb.Models
+@inject PersonaService PersonaService
+@inject LogService LogService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+<h3>Lista de personas</h3>
+
+<div>
+    <NavLink class="btn btn-primary" href="/crear-persona">Nueva Persona</NavLink>
+</div>
+
+@if (Personas == null)
+{
+    <p>Error al conectar con la base de datos</p>
+}
+else if (Personas.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipo de Documento</th>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var persona in Personas)
+            {
+                <tr>
+                    <td>@persona.Tipo_Doc</td>
+                    <td>@persona.Num_Doc</td>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellidos</td>
+                    <td>
+                        <NavLink class="btn btn-info" href="@($"/DetallePersona/{persona.Num_Doc}")">Expandir</NavLink>
+                        <NavLink class="btn btn-warning" href="@($"/EditarPersona/{persona.Num_Doc}")">Editar</NavLink>
+                        <NavLink class="btn btn-danger" href="@($"/BorrarPersona/{persona.Num_Doc}")">Borrar</NavLink>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Personas.Count() == 0)
+{
+    <p>No hay registros de personas disponibles.</p>
+}
+
+@code {
+    private IEnumerable<BlazorServerWeb.Models.Persona> Personas;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            StateHasChanged();
+            Personas = await PersonaService.GetPersonasAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener personas: {ex.Message}");
+        }
+    }
+}

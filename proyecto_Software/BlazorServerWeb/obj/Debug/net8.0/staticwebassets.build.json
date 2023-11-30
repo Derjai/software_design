@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q7cb6K6W3P5vGyV0euUuqnVT54dN2s9xnoVUB4s0/mY=",
+  "Hash": "VjKcW7A8j/ed2ozG7HH2cHbj0E7opYSMuMEH9jROfts=",
   "Source": "BlazorServerWeb",
   "BasePath": "_content/BlazorServerWeb",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\Jaider\\Documents\\GitHub\\software_design\\proyecto_Software\\BlazorServerWeb\\wwwroot\\myscripts.js",
+      "SourceId": "BlazorServerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jaider\\Documents\\GitHub\\software_design\\proyecto_Software\\BlazorServerWeb\\wwwroot\\",
+      "BasePath": "_content/BlazorServerWeb",
+      "RelativePath": "myscripts.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\myscripts.js"
     }
   ]
 }

@@ -1,0 +1,34 @@
+﻿@page "/BorrarPersona/{id}"
+@using BlazorServerWeb.Services
+@using BlazorServerWeb.Models
+@inject PersonaService PersonaService
+@inject LogService LogService
+<h3>Borrar Persona</h3>
+@if (errorMessage != null)
+{
+    <p>@errorMessage</p>
+}
+else
+{
+    <p>Persona borrada correctamente.</p>
+}
+
+@code {
+    [Parameter] public string id { get; set; }
+    private string errorMessage;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await PersonaService.DeletePersonaAsync(id);
+            var transaccion = new BlazorServerWeb.Models.Log { Tipo_Transaccion = "Borrar", Fecha = DateTime.Now, Num_Doc = id };
+            await LogService.AddLogAsync(transaccion);
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener persona: {ex.Message}");
+            errorMessage = "Error al borrar persona. Servidor caído";
+        }
+    }
+}

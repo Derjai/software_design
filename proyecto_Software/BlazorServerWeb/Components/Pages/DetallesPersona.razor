@@ -1,0 +1,58 @@
+﻿@page "/DetallePersona/{id}"
+@using BlazorServerWeb.Services
+@using BlazorServerWeb.Models
+@inject PersonaService PersonaService
+@inject LogService LogService
+
+<h3>Detalles Persona</h3>
+@if (persona != null)
+{
+    <div>
+        @if(@persona.Foto != null)
+        {
+            <img src="@persona.Foto" alt="Foto de la persona" />
+        }
+        <p>Tipo de Documento: @persona.Tipo_Doc</p>
+        <p>Número de Documento: @persona.Num_Doc</p>
+        <p>Nombre: @persona.Nombre</p>
+        @if(@persona.Seg_Nombre != null)
+        {
+            <p>Segundo Nombre: @persona.Seg_Nombre</p>
+        }
+        <p>Apellidos: @persona.Apellidos</p>
+        <p>Fecha de Nacimiento: @persona.Fecha_Nacimiento</p>
+        <p>Género: @persona.Genero</p>
+        <p>Correo Electrónico: @persona.Correo</p>
+        <p>Celular: @persona.Celular</p>
+    </div>
+}
+else
+{
+    <p>No se encontró la persona. Compruebe conexión a la base de datos o verifique el documento escrito</p>
+}
+
+@code {
+    [Parameter] public string id { get; set; }
+    private BlazorServerWeb.Models.Persona persona { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            persona = await PersonaService.GetPersonaAsync(id);
+            if (persona != null)
+            {
+                var transaccion = new BlazorServerWeb.Models.Log
+                    {
+                        Fecha = DateTime.Now,
+                        Num_Doc = id,
+                        Tipo_Transaccion = "Leer"
+                    };
+                await LogService.AddLogAsync(transaccion);   
+            }
+            
+        } catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar persona: {ex.Message}");
+        }
+    }
+}

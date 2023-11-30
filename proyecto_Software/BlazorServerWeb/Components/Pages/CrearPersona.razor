@@ -1,0 +1,138 @@
+﻿@page "/crear-persona"
+@inject PersonaService PersonaService
+@inject LogService LogService
+@using BlazorServerWeb.Models
+@using BlazorServerWeb.Services
+@inject NavigationManager NavigationManager
+
+<h3>Crear Nueva Persona</h3>
+<EditForm Model="@per"  OnValidSubmit="(async()=> await OnCrearPersona(per))" FormName="Nueva Persona">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="TipoDocumento">Tipo de Documento:</label>
+        <InputSelect id="TipoDocumento" @bind-Value="per.TipoDocumento">
+            <option value="Cedula">Cédula</option>
+            <option value="TarjetaIdentidad">Tarjeta de Identidad</option>
+        </InputSelect>
+        <ValidationMessage For="@(() => per.TipoDocumento)" />
+    </div>
+
+    <div class="form-group">
+        <label for="NumDoc">Número de Documento:</label>
+        <InputText id="NumDoc" @bind-Value="per.NumDoc" />
+        <ValidationMessage For="@(() => per.NumDoc)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Nombre">Nombre:</label>
+        <InputText id="Nombre" @bind-Value="per.Nombre" />
+        <ValidationMessage For="@(() => per.Nombre)" />
+    </div>
+
+    <div class="form-group">
+        <label for="SegundoNombre">Segundo Nombre:</label>
+        <InputText id="SegundoNombre" @bind-Value="per.SegundoNombre" />
+        <ValidationMessage For="@(() => per.SegundoNombre)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Apellidos">Apellidos:</label>
+        <InputText id="Apellidos" @bind-Value="per.Apellidos" />
+        <ValidationMessage For="@(() => per.Apellidos)" />
+    </div>
+
+    <div class="form-group">
+        <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+        <InputDate id="FechaNacimiento" @bind-Value="per.FechaNacimiento" />
+        <ValidationMessage For="@(() => per.FechaNacimiento)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Genero">Género:</label>
+        <InputSelect id="Genero" @bind-Value="per.Genero">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="No Binario">No Binario</option>
+            <option value="Prefiero no especificar">Prefiero no especificar</option>
+        </InputSelect>
+        <ValidationMessage For="@(() => per.Genero)" />
+    </div>
+
+    <div class="form-group">
+        <label for="CorreoElectronico">Correo Electrónico:</label>
+        <InputText id="CorreoElectronico" @bind-Value="per.CorreoElectronico" />
+        <ValidationMessage For="@(() => per.CorreoElectronico)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Celular">Teléfono:</label>
+        <InputText id="Celular" @bind-Value="per.Celular" />
+        <ValidationMessage For="@(() => per.Celular)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Foto">Foto:</label>
+        <InputFile id="Foto" @bind-Value="per.Foto" />
+        <ValidationMessage For="@(() => per.Foto)" />
+    </div>
+    <button type="submit">Crear Persona</button>
+</EditForm>
+@if (errorMessage != null)
+{
+    <p>@errorMessage</p>
+}
+
+@code {
+    private string errorMessage;
+    [SupplyParameterFromForm]
+    private PersonaViewModel per { get; set; } = new PersonaViewModel();
+    private BlazorServerWeb.Models.Persona pers { get; set; } = new BlazorServerWeb.Models.Persona();
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+
+        if (file != null)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(memoryStream);
+                per.Foto = memoryStream.ToArray();
+            }
+        }
+        else
+        {
+            per.Foto = null;
+        }
+    }
+    private async Task OnCrearPersona(PersonaViewModel per)
+    {
+        try
+        {
+            var pers = new BlazorServerWeb.Models.Persona
+                {
+                    Tipo_Doc = per.TipoDocumento,
+                    Num_Doc = per.NumDoc,
+                    Nombre = per.Nombre,
+                    Seg_Nombre = per.SegundoNombre,
+                    Apellidos = per.Apellidos,
+                    Fecha_Nacimiento = per.FechaNacimiento,
+                    Genero = per.Genero,
+                    Correo = per.CorreoElectronico,
+                    Celular = per.Celular,
+                    Foto = per.Foto
+                };
+            Console.WriteLine($"Creando persona: {pers.Nombre}, {pers.Apellidos}");
+            await PersonaService.AddPersonaAsync(pers);
+            Console.WriteLine("Persona creada con éxito");
+            var transaccion = new BlazorServerWeb.Models.Log { Tipo_Transaccion = "Crear", Fecha = DateTime.Now, Num_Doc = pers.Num_Doc };
+            await LogService.AddLogAsync(transaccion);
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener personas: {ex.Message}");
+            errorMessage = "Error al crear persona. Por favor, inténtalo de nuevo.";
+        }
+    }
+}

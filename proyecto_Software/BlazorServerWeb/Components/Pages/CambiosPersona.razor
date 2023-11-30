@@ -1,0 +1,38 @@
+﻿@page "/CambiosPersona/{id}"
+@using BlazorServerWeb.Services
+@using BlazorServerWeb.Models
+@inject PersonaService PersonaService
+@inject LogService LogService
+<h3>CambiosPersona</h3>
+
+@if (errorMessage != null)
+{
+    <p>@errorMessage</p>
+}
+else
+{
+    <p>Registro guardado correctamente.</p>
+}
+
+@code {
+    [Parameter] public string id { get; set; }
+    private string errorMessage;
+    private BlazorServerWeb.Models.Persona person { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            person = await PersonaService.GetPersonaAsync(id);
+            await PersonaService.UpdatePersonaAsync(person);
+            var transaccion = new BlazorServerWeb.Models.Log { Tipo_Transaccion = "Actualizar", Fecha = DateTime.Now, Num_Doc = id };
+            await LogService.AddLogAsync(transaccion);
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener persona: {ex.Message}");
+            errorMessage = "Error al enviar el registro a la base de datos, servidor caído";
+        }
+    }
+
+}

@@ -3,6 +3,7 @@ using BlazorServerWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient<LogService>(client => client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("API_GATEWAY_URL")));
+builder.Services.AddHttpClient<PersonaService>(client => client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("API_GATEWAY_URL")));
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddRazorPages();

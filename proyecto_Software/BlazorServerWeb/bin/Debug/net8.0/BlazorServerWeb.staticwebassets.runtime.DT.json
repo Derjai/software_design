@@ -43,6 +43,14 @@
         },
         "Patterns": null
       },
+      "myscripts.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "myscripts.js"
+        },
+        "Patterns": null
+      },
       "BlazorServerWeb.styles.css": {
         "Children": null,
         "Asset": {
